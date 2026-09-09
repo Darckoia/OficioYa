@@ -1,0 +1,197 @@
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+  display: grid;
+  gap: 20px;
+}
+
+.hero,
+.panel {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+}
+
+.hero h1 {
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.eyebrow {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.hero-copy {
+  max-width: 70ch;
+}
+
+.hero-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cta-primary,
+.cta-secondary,
+button {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cta-primary,
+button {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.cta-secondary {
+  background: #eff6ff;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.benefits {
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+  padding-left: 18px;
+}
+
+.panel header {
+  margin-bottom: 14px;
+}
+
+.chat-box {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.bubble {
+  border-radius: 12px;
+  padding: 10px;
+  max-width: 85%;
+}
+
+.bubble p {
+  margin: 0 0 4px;
+}
+
+.bubble span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.bubble.cliente {
+  justify-self: start;
+  background: #ffffff;
+}
+
+.bubble.asesor {
+  justify-self: end;
+  background: #dbeafe;
+}
+
+.typing {
+  margin: 0;
+  font-size: 14px;
+}
+
+.quick-replies {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.quick-replies button {
+  flex: 0 0 auto;
+  background: #1e293b;
+}
+
+.composer {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.composer textarea,
+.search {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px;
+  font: inherit;
+}
+
+.storefront-grid,
+.templates-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.store-card,
+.template-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  background: #ffffff;
+}
+
+.store-card h3,
+.template-card h3 {
+  margin-top: 0;
+}
+
+.store-card strong {
+  display: block;
+  margin: 8px 0;
+}
+
+.template-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.template-actions button:last-child {
+  background: #0f172a;
+}
+
+.tag {
+  margin: 0;
+  font-size: 12px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.feedback,
+.empty-state {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #334155;
+}
+
+@media (max-width: 680px) {
+  .app {
+    padding-inline: 12px;
+  }
+
+  .hero,
+  .panel {
+    padding: 18px;
+  }
+}
