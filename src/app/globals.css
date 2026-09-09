@@ -1,0 +1,29 @@
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+* {
+  border-color: var(--border);
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-3xl border border-slate-200 bg-white shadow-soft;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl;
+  }
+}
