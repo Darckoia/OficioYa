@@ -50,6 +50,9 @@ type StorefrontDraft = {
 }
 
 const STORE_KEY = 'oficioya-storefront-items'
+const DEFAULT_STORE_IMAGE =
+  'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80'
+const DEFAULT_STORE_CTA_URL = 'https://wa.me/56987654321'
 
 const templateLibrary: MessageTemplate[] = [
   {
@@ -127,6 +130,20 @@ const emptyDraft: StorefrontDraft = {
 }
 
 const normalizePhone = (value: string) => value.replace(/[\s()-]/g, '')
+const sanitizeHttpUrl = (value: string) => {
+  if (!value.trim()) {
+    return ''
+  }
+
+  try {
+    const parsed = new URL(value)
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+      ? parsed.toString()
+      : ''
+  } catch {
+    return ''
+  }
+}
 
 const formatCLP = (value: number) =>
   new Intl.NumberFormat('es-CL', {
@@ -317,12 +334,10 @@ function App() {
       id: `store-${crypto.randomUUID()}`,
       title: storefrontDraft.title.trim(),
       description: storefrontDraft.description.trim(),
-      imageUrl:
-        storefrontDraft.imageUrl.trim() ||
-        'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
+      imageUrl: sanitizeHttpUrl(storefrontDraft.imageUrl) || DEFAULT_STORE_IMAGE,
       price,
       ctaText: storefrontDraft.ctaText.trim(),
-      ctaUrl: storefrontDraft.ctaUrl.trim() || 'https://wa.me/56987654321',
+      ctaUrl: sanitizeHttpUrl(storefrontDraft.ctaUrl) || DEFAULT_STORE_CTA_URL,
     }
 
     setStorefrontItems((previous) => [storefrontItem, ...previous])
@@ -344,13 +359,21 @@ function App() {
       <main className="public-store-layout">
         {publicStorefront ? (
           <article className="public-store-card">
-            <img src={publicStorefront.imageUrl} alt={publicStorefront.title} />
+            <img
+              src={sanitizeHttpUrl(publicStorefront.imageUrl) || DEFAULT_STORE_IMAGE}
+              alt={publicStorefront.title}
+            />
             <div>
               <p className="chip">Vitrina de OficioYa</p>
               <h1>{publicStorefront.title}</h1>
               <p>{publicStorefront.description}</p>
               <p className="price">{formatCLP(publicStorefront.price)}</p>
-              <a href={publicStorefront.ctaUrl} target="_blank" rel="noreferrer" className="cta-link">
+              <a
+                href={sanitizeHttpUrl(publicStorefront.ctaUrl) || DEFAULT_STORE_CTA_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="cta-link"
+              >
                 {publicStorefront.ctaText}
               </a>
             </div>
@@ -621,7 +644,7 @@ function App() {
           ) : (
             storefrontItems.map((item) => (
               <article key={item.id} className="store-card">
-                <img src={item.imageUrl} alt={item.title} />
+                <img src={sanitizeHttpUrl(item.imageUrl) || DEFAULT_STORE_IMAGE} alt={item.title} />
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <strong>{formatCLP(item.price)}</strong>
