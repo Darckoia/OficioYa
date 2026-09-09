@@ -1,0 +1,451 @@
+.page-shell {
+  display: grid;
+  gap: 32px;
+}
+
+.hero-section,
+.section-block {
+  padding: 32px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hero-copy,
+.hero-panel,
+.chat-panel,
+.send-panel,
+.library-controls,
+.conversation-list,
+.workflow-card,
+.store-card,
+.template-card,
+.benefit-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
+.hero-copy {
+  padding: 12px 4px;
+}
+
+.hero-description {
+  max-width: 62ch;
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-actions,
+.template-actions,
+.quick-replies {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-action,
+.secondary-action,
+.conversation-card,
+.quick-replies button,
+.composer textarea,
+.library-controls input {
+  font: inherit;
+}
+
+.primary-action,
+.secondary-action,
+.conversation-card,
+.quick-replies button,
+.template-actions button,
+.send-panel button {
+  border: 0;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primary-action,
+.secondary-action {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #25c18e, #0b8f70);
+  color: #f3fffa;
+  box-shadow: 0 16px 30px rgba(37, 193, 142, 0.25);
+}
+
+.primary-action.small {
+  min-height: 40px;
+}
+
+.secondary-action {
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+
+.primary-action:hover,
+.secondary-action:hover,
+.conversation-card:hover,
+.quick-replies button:hover,
+.template-actions button:hover,
+.send-panel button:hover {
+  transform: translateY(-1px);
+}
+
+.metric-grid,
+.benefit-grid,
+.storefront-grid,
+.template-grid,
+.workflow-steps {
+  display: grid;
+  gap: 16px;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.metric-card {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.metric-card strong {
+  font-size: 1.75rem;
+  color: var(--text-h);
+}
+
+.hero-panel,
+.chat-panel,
+.send-panel,
+.library-controls,
+.workflow-card,
+.store-card,
+.template-card {
+  padding: 24px;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 18px;
+  background:
+    radial-gradient(circle at top, rgba(37, 193, 142, 0.16), transparent 55%),
+    var(--surface);
+}
+
+.hero-panel-header,
+.hero-highlight,
+.store-card-top,
+.template-card-top,
+.chat-panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-highlight {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(11, 143, 112, 0.08);
+}
+
+.status-pill,
+.store-tag,
+.template-card-top span {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.status-pill {
+  background: rgba(37, 193, 142, 0.16);
+  color: #0b8f70;
+}
+
+.status-pill.subtle,
+.store-tag,
+.template-card-top span {
+  background: rgba(11, 18, 32, 0.06);
+  color: var(--text);
+}
+
+.benefit-list,
+.message-stream {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.benefit-list li {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.section-heading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.benefit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.benefit-card h3,
+.store-card h3,
+.template-card strong,
+.workflow-card h3,
+.chat-panel h3,
+.send-panel h3 {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.benefit-card {
+  padding: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(37, 193, 142, 0.1);
+  font-size: 1.4rem;
+}
+
+.chat-layout,
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.conversation-list {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.conversation-card {
+  width: 100%;
+  padding: 16px;
+  border-radius: 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: space-between;
+}
+
+.conversation-card.selected {
+  border-color: rgba(37, 193, 142, 0.45);
+  background: rgba(37, 193, 142, 0.12);
+}
+
+.conversation-card div,
+.composer,
+.library-controls label,
+.send-status {
+  display: grid;
+  gap: 6px;
+}
+
+.message-stream {
+  min-height: 340px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.message-bubble,
+.empty-state {
+  max-width: 78%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.message-bubble p,
+.template-card p {
+  white-space: pre-line;
+}
+
+.message-bubble.customer {
+  background: rgba(11, 18, 32, 0.06);
+}
+
+.message-bubble.business {
+  margin-left: auto;
+  background: rgba(37, 193, 142, 0.15);
+}
+
+.message-bubble.system,
+.empty-state {
+  margin-inline: auto;
+  background: rgba(133, 145, 166, 0.14);
+  text-align: center;
+}
+
+.library-empty-state {
+  max-width: none;
+  min-height: 180px;
+  place-content: center;
+}
+
+.message-bubble span {
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.quick-replies button {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+
+.composer span,
+.library-controls span,
+.send-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.composer textarea,
+.library-controls input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  resize: vertical;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text-h);
+}
+
+.storefront-grid,
+.template-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.store-card,
+.template-card,
+.workflow-card {
+  display: grid;
+  gap: 14px;
+}
+
+.store-card a {
+  color: #0b8f70;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.library-controls {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.template-actions {
+  margin-top: auto;
+}
+
+.workflow-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+}
+
+.workflow-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.workflow-card span:first-child {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.whatsapp-section {
+  margin-bottom: 32px;
+}
+
+.send-status {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(11, 18, 32, 0.05);
+}
+
+@media (max-width: 1024px) {
+  .hero-section,
+  .benefit-grid,
+  .storefront-grid,
+  .template-grid,
+  .workflow-steps,
+  .chat-layout,
+  .workflow-grid,
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section,
+  .section-block {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .message-bubble,
+  .empty-state {
+    max-width: 100%;
+  }
+}
