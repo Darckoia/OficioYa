@@ -1,0 +1,16 @@
+{
+  "name": "OficioYa",
+  "short_name": "OficioYa",
+  "description": "Plataforma demo para ventas y atención por WhatsApp.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#155ce4",
+  "icons": [
+    {
+      "src": "/icons/oficioya-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

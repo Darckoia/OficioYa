@@ -1,0 +1,36 @@
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(180deg, var(--background) 0%, var(--surface-muted) 100%);
+  color: var(--foreground);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: rgba(21, 92, 228, 0.18);
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-3xl border shadow-soft;
+    background: var(--surface);
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+    color: var(--foreground);
+  }
+}
