@@ -18,7 +18,13 @@ export default function VitrineDemoPage() {
   const cartCount = useMemo(() => cart.length, [cart]);
 
   const handleAdd = (product: Product) => {
-    setCart((current) => [...current, product.id]);
+    setCart((current) => {
+      if (current.includes(product.id)) {
+        return current;
+      }
+
+      return [...current, product.id];
+    });
     notifySuccess('Producto agregado', `${product.name} quedó en el carrito demo.`);
   };
 

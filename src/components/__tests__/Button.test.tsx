@@ -11,4 +11,10 @@ describe('Button', () => {
 
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
+
+  it('renders a link when href is provided', () => {
+    render(<Button href="/demo">Ir a demos</Button>);
+
+    expect(screen.getByRole('link', { name: 'Ir a demos' })).toHaveAttribute('href', '/demo');
+  });
 });

@@ -46,7 +46,7 @@ export function ProductModal({ product, isInCart, onClose, onAdd, onRemove }: Pr
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-300">Detalle interactivo</p>
                 <h3 id="product-modal-title" className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{product.name}</h3>
               </div>
-              <button type="button" onClick={onClose} className="rounded-full bg-slate-100 px-3 py-1 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+              <button type="button" aria-label="Cerrar detalle del producto" onClick={onClose} className="rounded-full bg-slate-100 px-3 py-1 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
                 ✕
               </button>
             </div>
@@ -58,6 +58,8 @@ export function ProductModal({ product, isInCart, onClose, onAdd, onRemove }: Pr
                     <button
                       key={`${product.id}-${image}`}
                       type="button"
+                      aria-label={`Ver imagen ${index + 1} de ${product.name}`}
+                      aria-pressed={activeImage === index}
                       onClick={() => setActiveImage(index)}
                       className={`rounded-2xl border p-3 text-3xl transition ${
                         activeImage === index

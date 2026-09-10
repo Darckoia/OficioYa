@@ -33,7 +33,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            aria-label="Cambiar tema"
+            aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-lg transition hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-brand-500 dark:hover:text-brand-200"
           >
