@@ -14,6 +14,8 @@ export type ChatTemplate = {
   message: string;
 };
 
+export const chatStorageKey = 'oficioya-chat-history';
+
 export const initialChatMessages: ChatMessageItem[] = [
   {
     id: 1,
@@ -40,18 +42,54 @@ export const initialChatMessages: ChatMessageItem[] = [
 
 export const chatTemplates: ChatTemplate[] = [
   {
+    id: 'availability',
+    title: 'Preguntar por disponibilidad',
+    message: 'Hola, ¿tienen disponibilidad para instalar esta semana en Maipú?'
+  },
+  {
     id: 'quote',
-    title: 'Enviar cotización rápida',
-    message: 'Te comparto una cotización estimada y, si te acomoda, agendamos instalación para mañana entre 10:00 y 13:00.'
+    title: 'Solicitar una cotización rápida',
+    message: 'Quiero una cotización estimada para una botillería pequeña con dos cámaras.'
   },
   {
     id: 'catalog',
-    title: 'Compartir catálogo',
-    message: 'Aquí va la vitrina con los modelos recomendados y sus precios. Si eliges uno hoy, te reservo stock altiro.'
-  },
-  {
-    id: 'follow-up',
-    title: 'Seguimiento amable',
-    message: 'Quedo atento por si quieres que te ayude a comparar opciones. También puedo sugerirte el kit más conveniente según tu local.'
+    title: 'Pedir catálogo recomendado',
+    message: '¿Me pueden compartir los kits y precios que recomiendan para mi local?'
   }
 ];
+
+const sellerAutoReplyRules = [
+  {
+    keywords: ['cotización', 'precio', 'precios', 'valor'],
+    reply:
+      'Claro. Para una botillería pequeña solemos recomendar el kit de 2 cámaras HD y puedo enviarte una cotización con instalación incluida en el mismo día.'
+  },
+  {
+    keywords: ['disponibilidad', 'mañana', 'semana', 'agenda'],
+    reply:
+      'Sí, tenemos espacios disponibles esta semana. Si me confirmas tu comuna y horario, te dejo una visita propuesta por WhatsApp altiro.'
+  },
+  {
+    keywords: ['kit', 'catálogo', 'modelos', 'cámaras'],
+    reply:
+      'Te comparto los modelos más convenientes: kit 2 cámaras HD, DVR con acceso desde el celular y opción de instalación básica para partir rápido.'
+  }
+] as const;
+
+export function formatChatTime(date = new Date()) {
+  return new Intl.DateTimeFormat('es-CL', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).format(date);
+}
+
+export function buildAutoReply(message: string) {
+  const normalizedMessage = message.toLowerCase();
+  const matchedRule = sellerAutoReplyRules.find((rule) => rule.keywords.some((keyword) => normalizedMessage.includes(keyword)));
+
+  return (
+    matchedRule?.reply ??
+    'Gracias por escribir. Si me compartes más contexto de tu negocio, te recomiendo una opción concreta y te dejo lista la propuesta para seguir por WhatsApp.'
+  );
+}

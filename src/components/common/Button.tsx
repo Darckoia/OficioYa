@@ -12,8 +12,8 @@ type ButtonProps = {
 
 const styles = {
   primary: 'bg-brand-600 text-white hover:bg-brand-700',
-  secondary: 'bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50',
-  ghost: 'bg-brand-50 text-brand-700 hover:bg-brand-100'
+  secondary: 'bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-white dark:ring-slate-700 dark:hover:bg-slate-800',
+  ghost: 'bg-brand-50 text-brand-700 hover:bg-brand-100 dark:bg-brand-950/50 dark:text-brand-200 dark:hover:bg-brand-900/60'
 };
 
 export function Button({
@@ -24,7 +24,7 @@ export function Button({
   variant = 'primary',
   className = ''
 }: ButtonProps) {
-  const baseClassName = `inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${styles[variant]} ${className}`;
+  const baseClassName = `inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 ${styles[variant]} ${className}`;
 
   if (href) {
     return (
