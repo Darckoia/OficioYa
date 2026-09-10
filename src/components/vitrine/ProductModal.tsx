@@ -31,11 +31,20 @@ export function ProductModal({ product, isInCart, onClose, onAdd, onRemove }: Pr
     <AnimatePresence>
       {product ? (
         <motion.div key={product.id} className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <motion.div variants={scaleIn} initial="hidden" animate="visible" exit="hidden" className="surface-card max-h-[90vh] w-full max-w-3xl overflow-y-auto p-6 dark:text-slate-100">
+          <motion.div
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="product-modal-title"
+            className="surface-card max-h-[90vh] w-full max-w-3xl overflow-y-auto p-6 dark:text-slate-100"
+          >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-300">Detalle interactivo</p>
-                <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{product.name}</h3>
+                <h3 id="product-modal-title" className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{product.name}</h3>
               </div>
               <button type="button" onClick={onClose} className="rounded-full bg-slate-100 px-3 py-1 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
                 ✕

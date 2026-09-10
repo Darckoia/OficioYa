@@ -4,17 +4,22 @@ OficioYa es una plataforma demo de ventas para trabajadores independientes y peq
 
 ## Módulos incluidos
 
-- **Landing Page** con propuesta de valor, beneficios y CTA
-- **Demo de Chat de Ventas** con plantillas y respuestas simuladas
-- **Demo de Vitrina** con catálogo de productos y carrito demo
-- **Biblioteca de Mensajes** con búsqueda y filtro por categoría
+- **Landing Page** con propuesta de valor, formulario de contacto y CTA
+- **Demo de Chat de Ventas** con persistencia local, plantillas y respuestas automáticas
+- **Demo de Vitrina** con catálogo de productos, carrito demo y modal interactivo
+- **Biblioteca de Mensajes** con búsqueda, filtros avanzados y copiado rápido
 - **Flujo WhatsApp** con stepper de implementación
 
 ## Stack
 
-- Next.js 14
+- Next.js 16
 - TypeScript
 - Tailwind CSS
+- Framer Motion
+- React Hook Form + Zod
+- Sonner
+- next-themes
+- Vitest + Testing Library
 
 ## Cómo ejecutar
 
@@ -32,6 +37,8 @@ npm run dev
 npm run build
 npm run start
 npm run typecheck
+npm run test
+npm run test:coverage
 ```
 
 ## Estructura principal
@@ -44,6 +51,9 @@ src/
 ├── components/
 ├── config/
 ├── data/
+├── hooks/
+├── lib/
+├── providers/
 └── styles/
 ```
 

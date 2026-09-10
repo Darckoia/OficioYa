@@ -15,6 +15,7 @@ export function useChat() {
   const [draft, setDraft] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [animateTypingId, setAnimateTypingId] = useState<number | null>(null);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
     try {
@@ -25,12 +26,18 @@ export function useChat() {
       }
     } catch {
       window.localStorage.removeItem(chatStorageKey);
+    } finally {
+      setHasLoaded(true);
     }
   }, []);
 
   useEffect(() => {
+    if (!hasLoaded) {
+      return;
+    }
+
     window.localStorage.setItem(chatStorageKey, JSON.stringify(messages));
-  }, [messages]);
+  }, [hasLoaded, messages]);
 
   useEffect(() => () => {
     if (timeoutRef.current) {
@@ -63,6 +70,7 @@ export function useChat() {
     setIsTyping(true);
 
     timeoutRef.current = window.setTimeout(() => {
+      timeoutRef.current = undefined;
       setMessages((current) => {
         const replyId = getNextId(current);
         setAnimateTypingId(replyId);

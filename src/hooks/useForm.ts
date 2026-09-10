@@ -11,6 +11,7 @@ export function useAppForm<TValues extends FieldValues>(schema: z.ZodType<TValue
 
   const handleValidatedSubmit = (onValid: (values: TValues) => void | Promise<void>) =>
     form.handleSubmit(async (values) => {
+      form.clearErrors();
       const result = schema.safeParse(values);
 
       if (!result.success) {

@@ -16,10 +16,10 @@ export default function WhatsAppDemoPage() {
 
   return (
     <div className="space-y-6">
-      <Card>
+      <Card className="dark:text-slate-100">
         <Badge tone="success">Implementación guiada</Badge>
-        <h2 className="mt-3 text-2xl font-semibold text-slate-950">Flujo sugerido para vender por WhatsApp</h2>
-        <p className="mt-2 text-slate-600">Recorre cinco pasos prácticos para lanzar un canal comercial ordenado y listo para convertir.</p>
+        <h2 className="mt-3 text-2xl font-semibold text-slate-950 dark:text-white">Flujo sugerido para vender por WhatsApp</h2>
+        <p className="mt-2 text-slate-600 dark:text-slate-300">Recorre cinco pasos prácticos para lanzar un canal comercial ordenado y listo para convertir.</p>
       </Card>
       <FlowStepper steps={whatsappSteps} currentStep={currentStep} onStepChange={setCurrentStep} />
       <StepCard step={whatsappSteps[currentStep]} isActive />
