@@ -2,11 +2,12 @@
   "name": "oficioya",
   "private": true,
   "version": "0.1.0",
-  "description": "Marketplace de servicios locales",
+  "workspaces": ["apps/web", "apps/api"],
   "scripts": {
-    "dev": "npm run dev --workspace apps/web",
-    "build": "npm run build --workspace apps/web",
-    "lint": "npm run lint --workspace apps/web"
+    "dev": "concurrently \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "build": "npm run build -w apps/web",
+    "start": "npm run start -w apps/api",
+    "test": "npm run test -w apps/api"
   },
-  "workspaces": ["apps/web", "apps/api"]
+  "devDependencies": { "concurrently": "^9.1.2" }
 }
