@@ -3,6 +3,6 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "scripts": {"dev":"node --watch src/server.js","start":"node src/server.js","test":"node --test"},
+  "scripts": {"dev":"node --watch src/server.js","start":"node src/server.js","test":"node --test","migrate":"node src/migrate.js"},
   "dependencies": {"cors":"^2.8.5","dotenv":"^16.4.7","express":"^4.21.2","jsonwebtoken":"^9.0.2","bcryptjs":"^2.4.3","zod":"^3.24.1","pg":"^8.16.3"}
 }

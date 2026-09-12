@@ -9,6 +9,15 @@ export async function listProducts(businessId) {
   return rows;
 }
 
+export async function getProductById(businessId, productId) {
+  const { rows } = await query(
+    `SELECT id, name, description, price_clp, cost_clp, stock, sku, ean, image_url, ai_generated, ai_confirmed, created_at, updated_at
+     FROM products WHERE id = $1 AND business_id = $2`,
+    [productId, businessId]
+  );
+  return rows[0] || null;
+}
+
 export async function createProduct(businessId, input) {
   const { rows } = await query(
     `INSERT INTO products
@@ -30,6 +39,48 @@ export async function createProduct(businessId, input) {
     ]
   );
   return rows[0];
+}
+
+export async function updateProduct(businessId, productId, input) {
+  const updates = [];
+  const values = [productId, businessId];
+  let paramIndex = 3;
+
+  const allowedFields = ['name', 'description', 'priceClp', 'costClp', 'stock', 'sku', 'ean', 'imageUrl'];
+  const columnMap = {
+    priceClp: 'price_clp',
+    costClp: 'cost_clp',
+    imageUrl: 'image_url',
+  };
+
+  for (const field of allowedFields) {
+    if (input[field] !== undefined) {
+      const column = columnMap[field] || field;
+      updates.push(`${column} = $${paramIndex++}`);
+      values.push(input[field]);
+    }
+  }
+
+  if (input.aiGenerated !== undefined) {
+    updates.push(`ai_generated = $${paramIndex++}`);
+    values.push(Boolean(input.aiGenerated));
+  }
+  if (input.aiConfirmed !== undefined) {
+    updates.push(`ai_confirmed = $${paramIndex++}`);
+    values.push(Boolean(input.aiConfirmed));
+  }
+
+  if (updates.length === 0) {
+    return getProductById(businessId, productId);
+  }
+
+  const { rows } = await query(
+    `UPDATE products SET ${updates.join(', ')}, updated_at = now()
+     WHERE id = $1 AND business_id = $2
+     RETURNING *`,
+    values
+  );
+  return rows[0] || null;
 }
 
 export async function adjustStock(businessId, productId, delta) {
